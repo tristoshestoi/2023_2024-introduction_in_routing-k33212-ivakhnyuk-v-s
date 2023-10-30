@@ -1,0 +1,49 @@
+name: laba1
+
+mgmt:
+  network: statics
+  ipv4_subnet: 172.20.20.0/24
+
+topology: 
+  nodes: 
+    router:
+      kind: vr-ros
+      image: vrnetlab/vr-routeros:6.47.9
+      mgmt_ipv4: 172.20.20.2
+
+    switchl1:
+      kind: vr-ros
+      image: vrnetlab/vr-routeros:6.47.9
+      mgmt_ipv4: 172.20.20.3
+
+    switchl2.1:
+      kind: vr-ros
+      image: vrnetlab/vr-routeros:6.47.9
+      mgmt_ipv4: 172.20.20.4
+
+    switchl2.2:
+      kind: vr-ros
+      image: vrnetlab/vr-routeros:6.47.9
+      mgmt_ipv4: 172.20.20.5
+
+    pc1:
+      kind: linux
+      image: ubuntu:latest
+
+      memory: 256MB
+      cpu: 0.5
+
+    pc2:
+      kind: linux
+      image: ubuntu:latest
+
+      memory: 256MB
+      cpu: 0.5
+
+
+  links: 
+    - endpoints: ["router:eth1", "switchl1:eth1"]
+    - endpoints: ["switchl1:eth2", "switchl2.1:eth1"]
+    - endpoints: ["switchl1:eth3", "switchl2.2:eth1"]
+    - endpoints: ["switchl2.1:eth2", "pc1:eth1"]
+    - endpoints: ["switchl2.2:eth2", "pc2:eth1"]
