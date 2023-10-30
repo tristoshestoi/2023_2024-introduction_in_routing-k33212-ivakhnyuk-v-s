@@ -27,7 +27,7 @@ Date of finish: 30.10.2023
 
 # Настройка switchl1
 
-![](pics/2.jpg.jpg)
+![](pics/2.jpg)
 
 # Настройка switchl2.1
 
