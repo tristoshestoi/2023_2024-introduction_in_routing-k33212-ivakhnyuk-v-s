@@ -1,0 +1,63 @@
+name: laba4
+
+mgmt:
+  network: laba4
+  ipv4_subnet: 172.20.20.0/24
+
+topology:
+  nodes:
+    router_ny:
+      kind: vr-ros
+      image: vrnetlab/vr-routeros:6.47.9
+      mgmt_ipv4: 172.20.20.10
+
+    router_lnd:
+      kind: vr-ros
+      image: vrnetlab/vr-routeros:6.47.9
+      mgmt_ipv4: 172.20.20.11
+
+    router_hki:
+      kind: vr-ros
+      image: vrnetlab/vr-routeros:6.47.9
+      mgmt_ipv4: 172.20.20.12
+
+    router_spb:
+      kind: vr-ros
+      image: vrnetlab/vr-routeros:6.47.9
+      mgmt_ipv4: 172.20.20.13
+
+    router_lbn:
+      kind: vr-ros
+      image: vrnetlab/vr-routeros:6.47.9
+      mgmt_ipv4: 172.20.20.14
+
+    router_svl:
+      kind: vr-ros
+      image: vrnetlab/vr-routeros:6.47.9
+      mgmt_ipv4: 172.20.20.15
+
+    pc1:
+      kind: vr-ros
+      image: vrnetlab/vr-routeros:6.47.9
+      mgmt_ipv4: 172.20.20.9
+
+    pc2:
+      kind: vr-ros
+      image: vrnetlab/vr-routeros:6.47.9
+      mgmt_ipv4: 172.20.20.2
+
+    pc3:
+      kind: vr-ros
+      image: vrnetlab/vr-routeros:6.47.9
+      mgmt_ipv4: 172.20.20.3
+
+  links:
+    - endpoints: ["router_ny:eth3","router_lnd:eth1"]
+    - endpoints: ["router_lnd:eth3","router_lbn:eth1"]
+    - endpoints: ["router_lnd:eth2","router_hki:eth1"]
+    - endpoints: ["router_hki:eth3","router_lbn:eth2"]
+    - endpoints: ["router_hki:eth2","router_spb:eth1"]
+    - endpoints: ["router_lbn:eth3","router_svl:eth1"]
+    - endpoints: ["pc1:eth2","router_spb:eth2"]
+    - endpoints: ["pc2:eth2","router_ny:eth2"]
+    - endpoints: ["pc3:eth2","router_svl:eth2"]

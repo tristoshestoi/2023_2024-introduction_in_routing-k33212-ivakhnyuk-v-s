@@ -1,0 +1,59 @@
+   name: laba3
+
+   mgmt:
+         network: statics
+         ipv4_subnet: 172.13.10.0/24
+
+   topology:
+
+         nodes:
+           router_ny:
+             kind: vr-ros
+             image: vrnetlab/vr-routeros:6.47.9
+           
+
+           router_lnd:
+             kind: vr-ros
+             image: vrnetlab/vr-routeros:6.47.9
+           
+             
+           router_hki:
+             kind: vr-ros
+             image: vrnetlab/vr-routeros:6.47.9
+         
+           router_spb:
+             kind: vr-ros
+             image: vrnetlab/vr-routeros:6.47.9
+           
+
+           router_msk:
+             kind: vr-ros
+             image: vrnetlab/vr-routeros:6.47.9
+            
+
+           router_lbn:
+             kind: vr-ros
+             image: vrnetlab/vr-routeros:6.47.9
+          
+
+           pc:
+             kind: vr-ros
+             image: vrnetlab/vr-routeros:6.47.9
+           
+
+           sgi_prism:
+             kind: vr-ros
+             image: vrnetlab/vr-routeros:6.47.9
+          
+
+
+         links:
+           - endpoints: ["sgi_prism:eth1","router_ny:eth1"]
+           - endpoints: ["router_ny:eth2","router_lnd:eth1"]
+           - endpoints: ["router_ny:eth3","router_lbn:eth1"]
+           - endpoints: ["router_lnd:eth2","router_hki:eth1"]
+           - endpoints: ["router_lbn:eth2","router_hki:eth2"]
+           - endpoints: ["router_lbn:eth3","router_msk:eth1"]
+           - endpoints: ["router_hki:eth3","router_spb:eth1"]
+           - endpoints: ["router_spb:eth2","router_msk:eth2"]
+           - endpoints: ["router_spb:eth3","pc:eth1"]
