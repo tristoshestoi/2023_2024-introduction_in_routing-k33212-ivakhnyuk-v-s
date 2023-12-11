@@ -136,9 +136,9 @@ Date of finish: 27.11.2023
 
 # Проверка связности pc
 
-![](pics/21.jpg)
+![](pics/21.png)
 
-![](pics/22.jpg)
+![](pics/22.png)
 
-![](pics/23.jpg)
+![](pics/23.png)
 
